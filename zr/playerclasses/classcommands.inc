@@ -935,6 +935,11 @@ stock int ClassModifyString(int classindex, int attributeflag, const char[] valu
             strcopy(ClassDataCache[classindex].Class_ModelPath, PLATFORM_MAX_PATH, value);
             return true;
         }
+		case ZR_CLASS_ARMS_MODEL_PATH:
+		{
+			strcopy(ClassDataCache[classindex].Class_Arms_Path, PLATFORM_MAX_PATH, value);
+			return true;
+		}
         case ZR_CLASS_OVERLAY_PATH:
         {
             strcopy(ClassDataCache[classindex].Class_OverlayPath, PLATFORM_MAX_PATH, value);
