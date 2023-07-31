@@ -1,32 +1,38 @@
-/*
- * ============================================================================
+/**
+ * vim: set ts=4 :
+ * =============================================================================
+ * SourceMod Map Management Plugin
+ * Provides all map related functionality, including map changing, map voting,
+ * and nextmap.
  *
- *  Zombie:Reloaded
+ * SourceMod (C)2004-2023 AlliedModders LLC.  All rights reserved.
+ * =============================================================================
  *
- *  File:          zombiereloaded.sp
- *  Type:          Base
- *  Description:   Plugin's base file.
+ * This program is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, version 3.0, as published by the
+ * Free Software Foundation.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ * details.
  *
- *  Copyright (C) 2009  Greyscale, Richard Helgeby
+ * You should have received a copy of the GNU General Public License along with
+ * this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * As a special exception, AlliedModders LLC gives you permission to link the
+ * code of this program (as well as its derivative works) to "Half-Life 2," the
+ * "Source Engine," the "SourcePawn JIT," and any Game MODs that run on software
+ * by the Valve Corporation.  You must obey the GNU General Public License in
+ * all respects for all other code used.  Additionally, AlliedModders LLC grants
+ * this exception to all derivative works.  AlliedModders LLC defines further
+ * exceptions, found in LICENSE.txt (as of this writing, version JULY-31-2007),
+ * or <http://www.sourcemod.net/license.php>.
  *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * ============================================================================
+ * Version: $Id$
  */
 
 #pragma semicolon 1
-#pragma newdecls optional
 
 #include <sourcemod>
 #include <sdktools>
@@ -37,7 +43,6 @@
 #include <zombiereloaded>
 #undef INCLUDED_BY_ZOMBIERELOADED
 
-#pragma newdecls required
 
 #undef REQUIRE_EXTENSIONS
 #tryinclude <hitboxchanger>
@@ -124,35 +129,35 @@ bool g_bServerStarted = false;
  */
 public Plugin myinfo =
 {
-    name = "Zombie:Reloaded",
-    author = "Greyscale | Richard Helgeby | BotoX | zaCade | Neon | maxime1907 | Franug | Anubis",
-    description = "Infection/survival style gameplay",
-    version = VERSION,
-    url = "http://forums.alliedmods.net/forumdisplay.php?f=132"
+	name = "Zombie:Reloaded",
+	author = "Greyscale | Richard Helgeby | BotoX | zaCade | Neon | maxime1907 | Franug | Anubis | Amauri",
+	description = "Infection/survival style gameplay",
+	version = SOURCEMOD_VERSION,
+	url = "www.sourcemod.com"
 };
 
 /**
  * Called before plugin is loaded.
  *
- * @param myself    The plugin handle.
- * @param late      True if the plugin was loaded after map change, false on map start.
- * @param error     Error message if load failed.
+ * @param myself	The plugin handle.
+ * @param late	  True if the plugin was loaded after map change, false on map start.
+ * @param error	 Error message if load failed.
  * @param err_max   Max length of the error message.
  *
- * @return          APLRes_Success for load success, APLRes_Failure or APLRes_SilentFailure otherwise.
+ * @return		  APLRes_Success for load success, APLRes_Failure or APLRes_SilentFailure otherwise.
  */
 public APLRes AskPluginLoad2(Handle myself, bool late, char []error, int err_max)
 {
-    // Load API.
-    APIInit();
+	// Load API.
+	APIInit();
 
-    // Register library
-    RegPluginLibrary("zombiereloaded");
+	// Register library
+	RegPluginLibrary("zombiereloaded");
 
-    g_bLate = late;
+	g_bLate = late;
 
-    // Let plugin load.
-    return APLRes_Success;
+	// Let plugin load.
+	return APLRes_Success;
 }
 
 /**
@@ -162,7 +167,7 @@ public void OnPluginStart()
 {
 	UpdateGameFolder();
 	// Forward event to modules.
-	LogInit();          // Doesn't depend on CVARs.
+	LogInit();		  // Doesn't depend on CVARs.
 	TranslationInit();
 	CvarsInit();
 	CookiesInit();
@@ -179,11 +184,11 @@ public void OnPluginStart()
  */
 public void OnAllPluginsLoaded()
 {
-    // Forward event to modules.
-    RoundEndOnAllPluginsLoaded();
-    WeaponsOnAllPluginsLoaded();
-    ConfigOnAllPluginsLoaded();
-    InfectOnAllPluginsLoaded();
+	// Forward event to modules.
+	RoundEndOnAllPluginsLoaded();
+	WeaponsOnAllPluginsLoaded();
+	ConfigOnAllPluginsLoaded();
+	InfectOnAllPluginsLoaded();
 }
 
 /**
@@ -191,10 +196,10 @@ public void OnAllPluginsLoaded()
  */
 public void OnLibraryAdded(const char[] name)
 {
-    // Forward event to modules.
-    ConfigOnLibraryAdded(name);
-    RoundEndOnLibraryAdded(name);
-    InfectOnLibraryAdded(name);
+	// Forward event to modules.
+	ConfigOnLibraryAdded(name);
+	RoundEndOnLibraryAdded(name);
+	InfectOnLibraryAdded(name);
 }
 
 /**
@@ -202,9 +207,9 @@ public void OnLibraryAdded(const char[] name)
  */
 public void OnLibraryRemoved(const char[] name)
 {
-    ConfigOnLibraryRemoved(name);
-    RoundEndOnLibraryRemoved(name);
-    InfectOnLibraryRemoved(name);
+	ConfigOnLibraryRemoved(name);
+	RoundEndOnLibraryRemoved(name);
+	InfectOnLibraryRemoved(name);
 }
 
 /**
@@ -212,24 +217,27 @@ public void OnLibraryRemoved(const char[] name)
  */
 public void OnMapStart()
 {
-    if(!g_bServerStarted)
-    {
-        ToolsInit();
-        g_bServerStarted = true;
-    }
-    // Forward event to modules.
-    ClassOnMapStart();
-    OverlaysOnMapStart();
-    RoundEndOnMapStart();
-    SEffectsOnMapStart();
-    ZSpawnOnMapStart();
-    VolInit();
-    // Fixed crashes on CS:GO
-    ModelsLoad();
-    DownloadsLoad();
-    InfectLoad();
-    VEffectsLoad();
-    SEffectsLoad();
+	if(!g_bServerStarted)
+	{
+		ToolsInit();
+		g_bServerStarted = true;
+	}
+	
+	// Forward event to modules.
+	ClassOnMapStart();
+	OverlaysOnMapStart();
+	RoundEndOnMapStart();
+	SEffectsOnMapStart();
+	ZSpawnOnMapStart();
+	VolInit();
+	// Fixed crashes on CS:GO
+	ModelsLoad();
+	DownloadsLoad();
+	InfectLoad();
+	VEffectsLoad();
+	SEffectsLoad();
+	
+	AutoExecConfig();
 }
 
 /**
@@ -237,12 +245,12 @@ public void OnMapStart()
  */
 public void OnMapEnd()
 {
-    // Forward event to modules.
-    InfectOnMapEnd();
-    VolOnMapEnd();
-    VEffectsOnMapEnd();
-    ZombieSoundsOnMapEnd();
-    ImmunityOnMapEnd();
+	// Forward event to modules.
+	InfectOnMapEnd();
+	VolOnMapEnd();
+	VEffectsOnMapEnd();
+	ZombieSoundsOnMapEnd();
+	ImmunityOnMapEnd();
 }
 
 /**
@@ -250,8 +258,8 @@ public void OnMapEnd()
  */
 public void OnAutoConfigsBuffered()
 {
-    // Load map configurations.
-    ConfigLoad();
+	// Load map configurations.
+	ConfigLoad();
 }
 
 /**
@@ -259,57 +267,57 @@ public void OnAutoConfigsBuffered()
  */
 public void OnConfigsExecuted()
 {
-    // Forward event to modules. (OnConfigsExecuted)
-    WeaponsLoad();
-    HitgroupsLoad();
-    DamageLoad();
-    ClassOnConfigsExecuted();
-    ClassLoad();
-    VolLoad();
+	// Forward event to modules. (OnConfigsExecuted)
+	WeaponsLoad();
+	HitgroupsLoad();
+	DamageLoad();
+	ClassOnConfigsExecuted();
+	ClassLoad();
+	VolLoad();
 
-    // Forward event to modules. (OnModulesLoaded)
-    ConfigOnModulesLoaded();
-    ClassOnModulesLoaded();
+	// Forward event to modules. (OnModulesLoaded)
+	ConfigOnModulesLoaded();
+	ClassOnModulesLoaded();
 
-    // Fake roundstart
-    EventRoundStart(INVALID_HANDLE, "", false);
+	// Fake roundstart
+	EventRoundStart(INVALID_HANDLE, "", false);
 
-    if(g_bLate)
-    {
-        bool bZombieSpawned = false;
-        for(int client = 1; client <= MaxClients; client++)
-        {
-            if(!IsClientConnected(client))
-                continue;
+	if(g_bLate)
+	{
+		bool bZombieSpawned = false;
+		for(int client = 1; client <= MaxClients; client++)
+		{
+			if(!IsClientConnected(client))
+				continue;
 
-            OnClientConnected(client);
+			OnClientConnected(client);
 
-            if(IsClientInGame(client))
-            {
-                OnClientPutInServer(client);
+			if(IsClientInGame(client))
+			{
+				OnClientPutInServer(client);
 
-                if(AreClientCookiesCached(client))
-                    OnClientCookiesCached(client);
+				if(AreClientCookiesCached(client))
+					OnClientCookiesCached(client);
 
-                if(IsClientAuthorized(client))
-                    OnClientPostAdminCheck(client);
+				if(IsClientAuthorized(client))
+					OnClientPostAdminCheck(client);
 
-                if(IsPlayerAlive(client) && GetClientTeam(client) == CS_TEAM_T)
-                {
-                    InfectHumanToZombie(client);
-                    bZombieSpawned = true;
-                }
-            }
-        }
+				if(IsPlayerAlive(client) && GetClientTeam(client) == CS_TEAM_T)
+				{
+					InfectHumanToZombie(client);
+					bZombieSpawned = true;
+				}
+			}
+		}
 
-        if(bZombieSpawned)
-        {
-            // Zombies have been infected.
-            g_bZombieSpawned = true;
-        }
+		if(bZombieSpawned)
+		{
+			// Zombies have been infected.
+			g_bZombieSpawned = true;
+		}
 
-        g_bLate = false;
-    }
+		g_bLate = false;
+	}
 }
 
 /**
@@ -330,45 +338,45 @@ public void OnClientConnected(int client)
 /**
  * Client is joining the server.
  *
- * @param client    The client index.
+ * @param client	The client index.
  */
 public void OnClientPutInServer(int client)
 {
-    // Forward event to modules.
-    ClassClientInit(client);
-    OverlaysClientInit(client);
-    WeaponsClientInit(client);
-    InfectClientInit(client);
-    DamageClientInit(client);
-    KnockbackClientInit(client);
-    SEffectsClientInit(client);
-    AntiStickClientInit(client);
-    SpawnProtectClientInit(client);
-    RespawnClientInit(client);
-    ZTele_OnClientPutInServer(client);
-    ZHPClientInit(client);
-    ImmunityClientInit(client);
-    ZSpawnOnClientPutInServer(client);
+	// Forward event to modules.
+	ClassClientInit(client);
+	OverlaysClientInit(client);
+	WeaponsClientInit(client);
+	InfectClientInit(client);
+	DamageClientInit(client);
+	KnockbackClientInit(client);
+	SEffectsClientInit(client);
+	AntiStickClientInit(client);
+	SpawnProtectClientInit(client);
+	RespawnClientInit(client);
+	ZTele_OnClientPutInServer(client);
+	ZHPClientInit(client);
+	ImmunityClientInit(client);
+	ZSpawnOnClientPutInServer(client);
 }
 
 /**
  * Called once a client's saved cookies have been loaded from the database.
  *
- * @param client        Client index.
+ * @param client		Client index.
  */
 public void OnClientCookiesCached(int client)
 {
-    // Check if client disconnected before cookies were done caching.
-    if (!IsClientConnected(client))
-    {
-        return;
-    }
+	// Check if client disconnected before cookies were done caching.
+	if (!IsClientConnected(client))
+	{
+		return;
+	}
 
-    // Forward "OnCookiesCached" event to modules.
-    ClassOnCookiesCached(client);
-    WeaponsOnCookiesCached(client);
-    ZHPOnCookiesCached(client);
-    VolumeOnCookiesCached(client);
+	// Forward "OnCookiesCached" event to modules.
+	ClassOnCookiesCached(client);
+	WeaponsOnCookiesCached(client);
+	ZHPOnCookiesCached(client);
+	VolumeOnCookiesCached(client);
 }
 
 /**
@@ -378,61 +386,61 @@ public void OnClientCookiesCached(int client)
  * This callback is gauranteed to occur on all clients, and always
  * after each OnClientPutInServer() call.
  *
- * @param client        Client index.
+ * @param client		Client index.
  * @noreturn
  */
 public void OnClientPostAdminCheck(int client)
 {
-    // Forward authorized event to modules that depend on client admin info.
-    ClassOnClientPostAdminCheck(client);
+	// Forward authorized event to modules that depend on client admin info.
+	ClassOnClientPostAdminCheck(client);
 }
 
 /**
  * Client is leaving the server.
  *
- * @param client    The client index.
+ * @param client	The client index.
  */
 public void OnClientDisconnect(int client)
 {
-    // Forward event to modules.
-    ClassOnClientDisconnect(client);
-    WeaponsOnClientDisconnect(client);
-    InfectOnClientDisconnect(client);
-    DamageOnClientDisconnect(client);
-    KnockbackOnClientDisconnect(client);
-    AntiStickOnClientDisconnect(client);
-    ZSpawnOnClientDisconnect(client);
-    VolOnPlayerDisconnect(client);
-    ImmunityOnClientDisconnect(client);
-    ZTele_OnClientDisconnect(client);
+	// Forward event to modules.
+	ClassOnClientDisconnect(client);
+	WeaponsOnClientDisconnect(client);
+	InfectOnClientDisconnect(client);
+	DamageOnClientDisconnect(client);
+	KnockbackOnClientDisconnect(client);
+	AntiStickOnClientDisconnect(client);
+	ZSpawnOnClientDisconnect(client);
+	VolOnPlayerDisconnect(client);
+	ImmunityOnClientDisconnect(client);
+	ZTele_OnClientDisconnect(client);
 }
 
 /**
  * Called when a clients movement buttons are being processed
  *
- * @param client    Index of the client.
+ * @param client	Index of the client.
  * @param buttons   Copyback buffer containing the current commands (as bitflags - see entity_prop_stocks.inc).
  * @param impulse   Copyback buffer containing the current impulse command.
- * @param vel       Players desired velocity.
- * @param angles    Players desired view angles.
- * @param weapon    Entity index of the new weapon if player switches weapon, 0 otherwise.
- * @return          Plugin_Handled to block the commands from being processed, Plugin_Continue otherwise.
+ * @param vel	   Players desired velocity.
+ * @param angles	Players desired view angles.
+ * @param weapon	Entity index of the new weapon if player switches weapon, 0 otherwise.
+ * @return		  Plugin_Handled to block the commands from being processed, Plugin_Continue otherwise.
  */
 public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3], float angles[3], int &weapon)
 {
-    Class_OnPlayerRunCmd(client, vel);
-    return Plugin_Continue;
+	Class_OnPlayerRunCmd(client, vel);
+	return Plugin_Continue;
 }
 
 /**
  * When an entity is spawned
  *
- * @param       entity      Entity index
- * @param       classname   Class name
+ * @param	   entity	  Entity index
+ * @param	   classname   Class name
  */
 public void OnEntitySpawned(int entity, const char[] classname)
 {
-    NapalmOnEntitySpawned(entity, classname);
+	NapalmOnEntitySpawned(entity, classname);
 }
 
 /**
@@ -441,5 +449,5 @@ public void OnEntitySpawned(int entity, const char[] classname)
  */
 public void OnGameFrame()
 {
-    KnockbackOnGameFrame();
+	KnockbackOnGameFrame();
 }
