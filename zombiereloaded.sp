@@ -36,6 +36,7 @@
 
 #include <sourcemod>
 #include <sdktools>
+#include <sdktools_variant_t> 
 #include <clientprefs>
 #include <cstrike>
 #tryinclude <multicolors>
