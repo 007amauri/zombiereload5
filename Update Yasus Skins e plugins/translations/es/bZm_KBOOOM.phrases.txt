@@ -1,0 +1,86 @@
+"Phrases"
+{
+  //Example: "Bail's pants are on fire"
+  "BOOMTIMER"
+  {
+    "#format" "{1:s}"
+    "en"    "Was stabbed by {1} :) you have 30 seconds to pick up any human being or you will die!"
+    "es"    "El jugador {1} se fue porque es un gilipollas!"
+	"pt"    "Foi esfaqueado por {1} :) você tem 30 segundos para pegar qualquer ser humano ou morrerá!"
+
+  }
+  //Example: "Hello, Bail!"
+  "knife0"
+  {
+    "#format" "{1:s}"
+    "en"    "Congratulations {1} :) Kill zombie!"
+    "es"    "Felicidades {1} :) ¡Has matado al zombi!"
+	"pt"    "Parabéns {1} :) Matou o zumbi!"
+  }
+  "knife1"
+  {
+    "#format" "{1:s}"
+    "en"    "{1} you, and fuck even!"
+    "es"    "{1} tú, ¡muy bien!"
+	"pt"    "{1} você, muito bom mesmo!"
+  }
+  "knife2"
+  {
+    "#format" "{1:s}"
+    "en"    "YOU LIKE RAMBO stabbed ATTACK YOUR OPPONENT {1} !"
+    "es"    "¡Tienes al zombi como RAMBO {1}!"
+	"pt"    "Voce pegou o zombie como o RAMBO {1} !"
+  }
+  "knife3"
+  {
+    "#format" "{1:s}"
+    "en"    "crazy Rambo you very cool es {1} !"
+    "es"    "Muy divertido como Rambo {1}!"
+	"pt"    "Bem divertido como o Rambo {1} !"
+  }
+  "knife4"
+  {
+    "#format" "{1:s}"
+    "en"    "putz was that {1}!"
+    "es"    "wow que fue esto {1}!"
+	"pt"    "nossa oque foi isto {1}!"
+  }
+ "knife5"
+  {
+    "#format" "{1:s}"
+    "en"    "Congratulations you are Chuck Norris {1}"
+    "es"    "Felicidades eres Chuck Norris {1}"
+	"pt"    "Parabéns você é o Chuck Norris {1}"
+  }
+
+ "zr_punishment1"
+  {
+    "#format" "{1:s}"
+    "en"    "{1} He was punished for knife the first zombie!"
+    "es"    "{1} Fue castigado por apuñalar al primer zombi!"
+	"pt"    "{1} Ele foi punido por esfaquear o primeiro zumbi!"
+  }
+
+ "zr_punishment2"
+  {
+    "#format" "{1:s}"
+    "en"    "{1} He suffered the virus QUIMERA ZOMBIE!"
+    "es"    "{1} Padeció el virus CHIMERA ZOMBIE!"
+	"pt"    "{1} Ele sofreu o vírus QUIMERA ZOMBIE!"
+  }
+ "zr_punishment3"
+  {
+    "#format" "{1:s}"
+    "en"    "{1} He suffered the virus QUIMERA ZOMBIE!"
+    "es"    "{1} ¡Padeció el virus ZOMBIE CHIMERA!"
+	"pt"    "{1} Ele sofreu o vírus QUIMERA ZOMBIE!"
+  }
+
+ "zr_disconnect"
+  {
+    "#format" "{1:s}"
+    "en"    "The player {1} He left because he's an asshole!"
+    "es"    "¡El jugador {1} se fue porque es un gilipollas!"
+	"pt"    "O jogador {1} Saiu porque é um babaca!"
+  }
+}

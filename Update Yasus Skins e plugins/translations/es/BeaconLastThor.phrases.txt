@@ -1,0 +1,53 @@
+"Phrases"
+{
+  //Example: "Bail's pants are on fire"
+  "inform1"
+  {
+    "#format" "{1:s}"
+    "en"    "{1} You already have BeaconThor effects on you."
+    "es"    "{1} Ya tienes efectos de BeaconThor en ti."
+	"pt"    "{1} Você já esta com efeitos BeaconThor em você."
+
+  }
+  //Example: "Hello, Bail!"
+  "inform2"
+  {
+    "#format" "{1:s}"
+    "en"    "You don't have energic! You need {1}!"
+    "es"    "¡No tienes energía! ¡Necesitas {1}!"
+	"pt"    "Você não tem energia! Você precisa de {1}!"
+  }
+  
+  "inform3"
+  {
+    "#format" "{1:s}"
+    "en"    "You already have BeaconThor effects on you."
+    "es"    "Ya tienes efectos de BeaconThor en ti."
+	"pt"    "Você já tem efeitos BeaconThor em você."
+  }
+  
+  "messagem"
+  {
+    "#format" "{1:s}"
+    "en"    "Congratulations, CT {1} contagem."
+    "es"    "Felicidades, CT {1} contagem. :) !"
+	"pt"    "Parabéns, CT {1} contagem. :) !"
+  }
+  
+  "ClientInfect"
+  {
+    "#format" "{1:s}"
+    "en"    "You already have BeaconThor effects on you."
+    "es"    "Ya tienes efectos de BeaconThor en ti."
+	"pt"    "Você já tem efeitos BeaconThor em você."
+  }
+  
+  "ClientInfect2"
+  {
+    "#format" "{1:s}"
+    "en"    "You already have BeaconThor effects on you."
+    "es"    "Ya tienes efectos de BeaconThor en ti."
+	"pt"    "Você já tem efeitos BeaconThor em você."
+  }
+  
+ }

@@ -1,0 +1,622 @@
+// ============================================================================
+//
+//                    Zombie:Reloaded Class configuration
+//
+// See Class Configuration (3.7) in the manual for detailed info.
+//
+// ============================================================================
+//
+// SHORT DESCRIPTIONS
+//
+// Attribute:               Values:     Description:
+// ----------------------------------------------------------------------------
+// enabled                  yes/no      Enables or disables a class.
+// team                     number      Specifies what team the class belongs to:
+//                                      0 - Zombies
+//                                      1 - Humans
+//                                      2 - Admin mode classes (incomplete feautre!)
+// team_default             yes/no      Marks the class as the default class in the team.
+// flags                    number      Special class flags (bit field). To combine multiple flags
+//                                      use a sum of the flag values. Available flags:
+//                                      1 - Admins only
+//                                      2 - Mother zombies only
+// group                    text        Restrict class to member of this SourceMod group. Leave blank for no restriction.
+// sm_flags		    text	Restrict class to client of this SourceMod admin flag. Leave blank for no restriction.
+// name                     text        The class name used in class menu.
+// description              text        The class description used in class menu.
+// model_path               text        Path to model to use. Relative to cstrike folder.
+// model_skin_index         number      Model skin index to use if model support multiple skins. First skin is 0.
+// alpha_initial            number      Initial transparency setting.
+// alpha_damaged            number      Transparency when damaged.
+// alpha_damage             number      How much damage to do before switching alpha.
+// overlay_path             text        Overlay displayed at the player.
+// nvgs                     yes/no      Give and turn on night vision.
+// fov                      number      Field of view value. 90 is default.
+// has_napalm               yes/no      Allows player to throw napalm grenades. Humans only.
+// napalm_time              decimal     Napalm burn duration. Zombies only.
+// immunity_mode            text        Special immunity modes. Some modes only works on humans or zombies:
+//                                      "none"   - Instant infection.
+//                                      "kill"   - Humans are instantly killed instead of turning zombies when attacked by zombies.
+//                                      "full"   - Completely immune. Humans can't be infected, zombies don't receive damage or knock back. Careful with this, it might not be that fun.
+//                                      "infect" - Humans are immune to infections until HP go below a threshold. Threshold at zero enable stabbing to death.
+//                                      "damage" - Zombies are immune to damage from humans/grenades, but still vulnerable to knock back.
+//                                      "delay"  - Delay infection for a certain number of seconds.
+//                                      "shield" - Shield against infections (humans) or knock back (zombies) for a certain amount of seconds (similar to TF2's übercharge). Deploy with "zshield" command.
+// immunity_amount          number      Immunity data value (humans only). Depends on the immunity mode above:
+//                                      "infect" - HP threshold. Infection will be allowed when HP go below this value. Zero will enable stabbing to death.
+//                                      "delay"  - Number of seconds the infection is delayed since first hit by a zombie.
+//                                      "shield" - Number of seconds the shield is active.
+// immunity_cooldown        number      Number of seconds of cooldown for temporary immunity actions, depending on mode.
+//                                      "delay"  - Number of seconds the delay is reduced every time a zombie attack, while a delayed infection is in progress.
+//                                      "shield" - Number of seconds the player has to wait before the shield can be used again.
+// no_fall_damage           on/off      Disables fall damage.
+// health                   number      How many health points to give.
+// health_regen_interval    decimal     Sets the regeneration interval. 0 to disable.
+// health_regen_amount      number      How much HP to give per interval.
+// health_infect_gain       number      How much HP to give when the player infects someone. Zombies only.
+// kill_bonus               number      How many points to give per kill. Zombies only.
+// speed                    decimal     The player speed. In LMV mode 300 is normal speed, 600 is double speed.
+// knockback                decimal     Force of the knockback when shot at. Zombies only.
+// jump_height              decimal     Multiplier of the players jump height. 0.0 means no jump boost, 1.0 is normal.
+// jump_distance            decimal     Multiplier of the players jump distance. 0.0 means no forward jump boost, 1.0 is normal.
+
+"classes"
+{
+    // ------------------------------------------
+    //
+    // Zombie classes
+    //
+    // ------------------------------------------
+    "Painkiller"
+    {
+        // General
+        "enabled"               "yes"
+        "team"                  "0"
+        "team_default"          "yes"
+        "flags"                 "0"
+        "group"                 ""
+		"sm_flags"				""
+        
+        "name"                  "Painkiller"
+        "description"           "Painkiller !!! Palhaço game Steam!"
+        
+        // Model
+        "model_path"            "models/player/ceylon/painkiller/clown.mdl"
+		"arms_path"             "models/player/colateam/zombie1/arms.mdl" // arms model for this class
+        "model_skin_index"      "0"
+        "alpha_initial"         "255"
+        "alpha_damaged"         "255"
+        "alpha_damage"          "0"
+		
+		//[ZR] Lights v2.0.2
+		"light_distance"        "600.0" // 0.0 or don't put this attribute to disable the light to this class
+        "light_color"           "75 255 75 255" // Set by RGBA
+        
+        // Hud
+        "overlay_path"          ""
+        "nvgs"                  "no"
+        "fov"                   "90"
+        
+        // Effects
+        "has_napalm"            "no"
+        "napalm_time"           "5.0"
+        
+        // Player behavior
+        "immunity_mode"         "none"
+        "immunity_amount"       "1"
+        "immunity_cooldown"     "60"
+        "no_fall_damage"        "yes"
+        
+        "health"                "7000"
+        "health_regen_interval" "5.0"
+        "health_regen_amount"   "50"
+        "health_infect_gain"    "0"
+        "kill_bonus"            "2"
+        
+        "speed"                 "310"
+        "knockback"             "3.0"
+        "jump_height"           "1.07"
+        "jump_distance"         "1.0"
+    }
+
+    "Stalker"
+    {
+        // General
+        "enabled"               "yes"
+        "team"                  "0"
+        "team_default"          "yes"
+        "flags"                 "0"
+        "group"                 ""
+		"sm_flags"				""
+        
+        "name"                  "Stalker"
+        "description"           "Stalker !!!!"
+        
+        // Model
+        "model_path"            "models/player/napas/stalker/zombie_custom.mdl"
+		"arms_path"             "models/player/colateam/zombie1/arms.mdl" // arms model for this class
+        "model_skin_index"      "0"
+        "alpha_initial"         "255"
+        "alpha_damaged"         "255"
+        "alpha_damage"          "0"
+		
+		//[ZR] Lights v2.0.2
+		"light_distance"        "600.0" // 0.0 or don't put this attribute to disable the light to this class
+        "light_color"           "255 165 0 255" // Set by RGBA
+        
+        // Hud
+        "overlay_path"          ""
+        "nvgs"                  "no"
+        "fov"                   "90"
+        
+        // Effects
+        "has_napalm"            "no"
+        "napalm_time"           "5.0"
+        
+        // Player behavior
+        "immunity_mode"         "none"
+        "immunity_amount"       "1"
+        "immunity_cooldown"     "60"
+        "no_fall_damage"        "yes"
+        
+        "health"                "7000"
+        "health_regen_interval" "5.0"
+        "health_regen_amount"   "50"
+        "health_infect_gain"    "0"
+        "kill_bonus"            "2"
+        
+        "speed"                 "310"
+        "knockback"             "3.0"
+        "jump_height"           "1.07"
+        "jump_distance"         "1.0"
+    }
+
+"JackFrost"
+    {
+        // General
+        "enabled"               "yes"
+        "team"                  "0"
+        "team_default"          "yes"
+        "flags"                 "0"
+        "group"                 ""
+		"sm_flags"				""
+        
+        "name"                  "JackFrost"
+        "description"           "JackFrost !!!!"
+        
+        // Model
+        "model_path"           "models/player/custom_player/kodua/snowman/snowman2.mdl"
+	"arms_path"            "models/player/custom_player/kodua/snowman/snowman_arms.mdl" // arms model for this class
+        "model_skin_index"      "0"
+        "alpha_initial"         "255"
+        "alpha_damaged"         "255"
+        "alpha_damage"          "0"
+		
+		//[ZR] Lights v2.0.2
+		"light_distance"        "600.0" // 0.0 or don't put this attribute to disable the light to this class
+        "light_color"           "255 255 0 255" // Set by RGBA
+        
+        // Hud
+        "overlay_path"          ""
+        "nvgs"                  "no"
+        "fov"                   "90"
+        
+        // Effects
+        "has_napalm"            "no"
+        "napalm_time"           "5.0"
+        
+        // Player behavior
+        "immunity_mode"         "none"
+        "immunity_amount"       "1"
+        "immunity_cooldown"     "60"
+        "no_fall_damage"        "yes"
+        
+        "health"                "7000"
+        "health_regen_interval" "5.0"
+        "health_regen_amount"   "50"
+        "health_infect_gain"    "0"
+        "kill_bonus"            "2"
+        
+        "speed"                 "310"
+        "knockback"             "3.0"
+        "jump_height"           "1.07"
+        "jump_distance"         "1.0"
+    }
+
+"soldier"
+    {
+        // General
+        "enabled"               "yes"
+        "team"                  "0"
+        "team_default"          "yes"
+        "flags"                 "0"
+        "group"                 ""
+		"sm_flags"				""
+        
+        "name"                  "Soldier"
+        "description"           "Soldier !!!!"
+        
+        // Model
+        "model_path"           "models/player/nf/dead_effect_2/soldier.mdl"
+	"arms_path"            "models/player/colateam/zombie1/arms.mdl" // arms model for this class
+        "model_skin_index"      "0"
+        "alpha_initial"         "255"
+        "alpha_damaged"         "255"
+        "alpha_damage"          "0"
+		
+		//[ZR] Lights v2.0.2
+		"light_distance"        "600.0" // 0.0 or don't put this attribute to disable the light to this class
+        "light_color"           "0 0 255 255" // Set by RGBA
+        
+        // Hud
+        "overlay_path"          ""
+        "nvgs"                  "no"
+        "fov"                   "90"
+        
+        // Effects
+        "has_napalm"            "no"
+        "napalm_time"           "5.0"
+        
+        // Player behavior
+        "immunity_mode"         "none"
+        "immunity_amount"       "1"
+        "immunity_cooldown"     "60"
+        "no_fall_damage"        "yes"
+        
+        "health"                "7000"
+        "health_regen_interval" "5.0"
+        "health_regen_amount"   "50"
+        "health_infect_gain"    "0"
+        "kill_bonus"            "2"
+        
+        "speed"                 "310"
+        "knockback"             "3.0"
+        "jump_height"           "1.07"
+        "jump_distance"         "1.0"
+    }
+
+    "mother_zombie"
+    {
+        // General
+        "enabled"               "yes"
+        "team"                  "0"
+        "team_default"          "no"
+        "flags"                 "2"
+        "group"                 ""
+		"sm_flags"				""
+        
+        "name"                  "Mother zombie"
+        "description"           "+HP regen | +Speed | +Jump | -Knockback"
+        
+        // Model
+        "model_path"            "models/player/eminem/resident_evil_4/el_gigante.mdl"
+		"arms_path"             "models/player/colateam/zombie1/arms.mdl" // arms model for this class
+        "model_skin_index"      "0"
+        "alpha_initial"         "255"
+        "alpha_damaged"         "255"
+        "alpha_damage"          "0"
+		
+		//[ZR] Lights v2.0.2
+		"light_distance"        "600.0" // 0.0 or don't put this attribute to disable the light to this class
+        "light_color"           "128 0 128 255" // Set by RGBA
+        
+        // Hud
+        "overlay_path"          ""
+        "nvgs"                  "no"
+        "fov"                   "90"
+        
+        // Effects
+        "has_napalm"            "0"
+        "napalm_time"           "5.0"
+        
+        // Player behavior
+        "immunity_mode"         "none"
+        "immunity_amount"       "1"
+        "immunity_cooldown"     "60"
+        "no_fall_damage"        "yes"
+        
+        "health"                "12000"
+        "health_regen_interval" "5.0"
+        "health_regen_amount"   "100"
+        "health_infect_gain"    "0"
+        "kill_bonus"            "4"
+        
+        "speed"                 "310"
+        "knockback"             "3.0"
+        "jump_height"           "1.07"
+        "jump_distance"         "1.0"
+    }
+
+    // ------------------------------------------
+    //
+    // Human classes
+    //
+    // ------------------------------------------		
+    
+    "Jinx"
+    {
+        // General
+        "enabled"               "yes"
+        "team"                  "1"
+        "team_default"          "yes"
+        "flags"                 "0"
+        "group"                 ""
+		"sm_flags"				""
+        
+        "name"                  "Jinx"
+        "description"           "Arcane Jinx"
+        
+        // Model
+        "model_path"            "models/player/custom_player/kolka/Arcane_Jinx/arcane_jinx.mdl"
+		"arms_path"             "models/player/custom_player/kolka/Arcane_Jinx/arcane_jinx_arms.mdl" // arms model for this class
+        "model_skin_index"      "0"
+        "alpha_initial"         "255"
+        "alpha_damaged"         "255"
+        "alpha_damage"          "0"
+        
+        // Hud
+        "overlay_path"          ""
+        "nvgs"                  "no"
+        "fov"                   "90"
+        
+        // Effects
+        "has_napalm"            "yes"
+        "napalm_time"           "0.0"
+        
+        // Player behavior
+        "immunity_mode"         "none"
+        "immunity_amount"       "1"
+        "immunity_cooldown"     "60"
+        "no_fall_damage"        "no"
+        
+        "health"                "100"
+        "health_regen_interval" "0.0"
+        "health_regen_amount"   "0"
+        "health_infect_gain"    "0"
+        "kill_bonus"            "2"
+        
+        "speed"                 "300"
+        "knockback"             "0"
+        "jump_height"           "1.0"
+        "jump_distance"         "1.0"
+    }
+	
+    "ciri_nude"
+    {
+        // General
+        "enabled"               "yes"
+        "team"                  "1"
+        "team_default"          "yes"
+        "flags"                 "0"
+        "group"                 ""
+		"sm_flags"				""
+        
+        "name"                  "ciri_nude"
+        "description"           "ciri nude tlou v2"
+        
+        // Model
+        "model_path"            "models/player/custom_player/tlou/ciri/ciri_nude_tlou_v2.mdl"
+		"arms_path"             "models/weapons/t_arms_professional.mdl" // arms model for this class
+        "model_skin_index"      "0"
+        "alpha_initial"         "255"
+        "alpha_damaged"         "255"
+        "alpha_damage"          "0"
+        
+        // Hud
+        "overlay_path"          ""
+        "nvgs"                  "no"
+        "fov"                   "90"
+        
+        // Effects
+        "has_napalm"            "yes"
+        "napalm_time"           "0.0"
+        
+        // Player behavior
+        "immunity_mode"         "none"
+        "immunity_amount"       "1"
+        "immunity_cooldown"     "60"
+        "no_fall_damage"        "no"
+        
+        "health"                "100"
+        "health_regen_interval" "0.0"
+        "health_regen_amount"   "0"
+        "health_infect_gain"    "0"
+        "kill_bonus"            "2"
+        
+        "speed"                 "300"
+        "knockback"             "0"
+        "jump_height"           "1.0"
+        "jump_distance"         "1.0"
+    }
+
+"VOIKANAA"
+    {
+        // General
+        "enabled"               "yes"
+        "team"                  "1"
+        "team_default"          "yes"
+        "flags"                 "0"
+        "group"                 ""
+		"sm_flags"				""
+        
+        "name"                  "VOIKANAA"
+        "description"           "VOIKANAA tlou v2"
+        
+        // Model
+        "model_path"            "models/player/samus/samus.mdl"
+	"arms_path"        	"models/weapons/t_arms_professional.mdl" // arms model for this class
+        "model_skin_index"      "0"
+        "alpha_initial"         "255"
+        "alpha_damaged"         "255"
+        "alpha_damage"          "0"
+        
+        // Hud
+        "overlay_path"          ""
+        "nvgs"                  "no"
+        "fov"                   "90"
+        
+        // Effects
+        "has_napalm"            "yes"
+        "napalm_time"           "0.0"
+        
+        // Player behavior
+        "immunity_mode"         "none"
+        "immunity_amount"       "1"
+        "immunity_cooldown"     "60"
+        "no_fall_damage"        "no"
+        
+        "health"                "100"
+        "health_regen_interval" "0.0"
+        "health_regen_amount"   "0"
+        "health_infect_gain"    "0"
+        "kill_bonus"            "2"
+        
+        "speed"                 "300"
+        "knockback"             "0"
+        "jump_height"           "1.0"
+        "jump_distance"         "1.0"
+    }
+
+"night_fighter"
+    {
+        // General
+        "enabled"               "yes"
+        "team"                  "1"
+        "team_default"          "yes"
+        "flags"                 "0"
+        "group"                 ""
+		"sm_flags"				""
+        
+        "name"                  "night_fighter"
+        "description"           "night_fighter fortnite"
+        
+        // Model
+        "model_path"            "models/player/custom_player/night_fighter/fortnite/prowler/prowler.mdl"
+	"arms_path"        	"models/player/custom_player/night_fighter/fortnite/prowler/prowler_arms.mdl" // arms model for this class
+        "model_skin_index"      "0"
+        "alpha_initial"         "255"
+        "alpha_damaged"         "255"
+        "alpha_damage"          "0"
+        
+        // Hud
+        "overlay_path"          ""
+        "nvgs"                  "no"
+        "fov"                   "90"
+        
+        // Effects
+        "has_napalm"            "yes"
+        "napalm_time"           "0.0"
+        
+        // Player behavior
+        "immunity_mode"         "none"
+        "immunity_amount"       "1"
+        "immunity_cooldown"     "60"
+        "no_fall_damage"        "no"
+        
+        "health"                "100"
+        "health_regen_interval" "0.0"
+        "health_regen_amount"   "0"
+        "health_infect_gain"    "0"
+        "kill_bonus"            "2"
+        
+        "speed"                 "300"
+        "knockback"             "0"
+        "jump_height"           "1.0"
+        "jump_distance"         "1.0"
+    }
+"pig"
+    {
+        // General
+        "enabled"               "yes"
+        "team"                  "1"
+        "team_default"          "yes"
+        "flags"                 "0"
+        "group"                 ""
+		"sm_flags"				""
+        
+        "name"                  "pig"
+        "description"           "pig LOL"
+        
+        // Model
+        "model_path"            "models/player/wcsnik/animals/pig/pig_v2.mdl"
+	"arms_path"        	"models/player/wcsnik/animals/pig/pig_arms.mdl" // arms model for this class
+        "model_skin_index"      "0"
+        "alpha_initial"         "255"
+        "alpha_damaged"         "255"
+        "alpha_damage"          "0"
+        
+        // Hud
+        "overlay_path"          ""
+        "nvgs"                  "no"
+        "fov"                   "90"
+        
+        // Effects
+        "has_napalm"            "yes"
+        "napalm_time"           "0.0"
+        
+        // Player behavior
+        "immunity_mode"         "none"
+        "immunity_amount"       "1"
+        "immunity_cooldown"     "60"
+        "no_fall_damage"        "no"
+        
+        "health"                "100"
+        "health_regen_interval" "0.0"
+        "health_regen_amount"   "0"
+        "health_infect_gain"    "0"
+        "kill_bonus"            "2"
+        
+        "speed"                 "300"
+        "knockback"             "0"
+        "jump_height"           "1.0"
+        "jump_distance"         "1.0"
+    }
+"viper_v2"
+    {
+        // General
+        "enabled"               "yes"
+        "team"                  "1"
+        "team_default"          "yes"
+        "flags"                 "0"
+        "group"                 ""
+		"sm_flags"				""
+        
+        "name"                  "viper_v2"
+        "description"           "viper_v2 Valorante"
+        
+        // Model
+        "model_path"            "models/player/custom_player/legacy/gxp/valorant/viper/viper_v2.mdl"
+	"arms_path"        	"models/player/custom_player/legacy/gxp/valorant/viper/viper_arm_v1.mdl" // arms model for this class
+        "model_skin_index"      "0"
+        "alpha_initial"         "255"
+        "alpha_damaged"         "255"
+        "alpha_damage"          "0"
+        
+        // Hud
+        "overlay_path"          ""
+        "nvgs"                  "no"
+        "fov"                   "90"
+        
+        // Effects
+        "has_napalm"            "yes"
+        "napalm_time"           "0.0"
+        
+        // Player behavior
+        "immunity_mode"         "none"
+        "immunity_amount"       "1"
+        "immunity_cooldown"     "60"
+        "no_fall_damage"        "no"
+        
+        "health"                "100"
+        "health_regen_interval" "0.0"
+        "health_regen_amount"   "0"
+        "health_infect_gain"    "0"
+        "kill_bonus"            "2"
+        
+        "speed"                 "300"
+        "knockback"             "0"
+        "jump_height"           "1.0"
+        "jump_distance"         "1.0"
+    }
+
+}

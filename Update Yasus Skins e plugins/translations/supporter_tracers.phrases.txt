@@ -1,0 +1,209 @@
+//**********************************************  Valid Colors	***********************************************
+// {NORMAL}, {DARKRED}, {PINK}, {YELLOW}, {GREEN}, {LIGHTGREEN}, {RED}, {GRAY}, {BLUE}, {DARKBLUE}, {PURPLE}  *
+//*************************************************************************************************************
+"Phrases"
+{
+	"Prefix_Chat"
+	{
+		"#format"	""
+		"en"		"{darkred}[Tracer]: {normal}"
+		"de"		"{darkred}[Laser]: {normal}"
+	}
+	"Phrase_Restricted"
+	{
+		"#format"	""
+		"en"		"Sorry, but this feature is reserved for supporters!"
+		"de"		"Entschuldigung, aber diese Funktion ist für Unterstützer reserviert!"
+	}
+	//======================================================
+	"Phrase_Enable"
+	{
+		"#format"	""
+		"en"		"Your personal tracers have been {green}enabled!"
+		"de"		"Ihre persönlicher Laser wurden {green}aktiviert!"
+	}
+	"Phrase_Disable"
+	{
+		"#format"	""
+		"en"		"Your personal tracers have been {darkred}disabled!"
+		"de"		"Ihr persönlicher Laser wurde {red}deaktiviert!"
+	}
+	"Phrase_Change_Color"
+	{
+		"#format"	"{1:s}"
+		"en"		"Your tracers now use the {darkblue}{1} {normal}Color!"
+		"de"		"Ihr Laser benutzt jetzt die {darkblue}{1} {normal}Farbe!"
+	}
+	"Phrase_Change_Width"
+	{
+		"#format"	"{1:f}"
+		"en"		"Your tracers now have a width of {darkblue}{1} {normal}units!"
+		"de"		"Ihr Laser hat jetzt eine Breite von {darkblue}{1} {normal}Einheiten!"
+	}
+	"Phrase_Change_Life"
+	{
+		"#format"	"{1:f}"
+		"en"		"Your tracers now live for {darkblue}{1} {normal}seconds!"
+		"de"		"Ihr Laser ist jetzt für {darkblue}{1} {normal}sekunden Sichtbar!"
+	}
+	"Phrase_Change_Material"
+	{
+		"#format"	"{1:s}"
+		"en"		"Your tracers now use the {darkblue}{1} {normal}Material!"
+		"de"		"Ihr Laser benutzen jetzt das {darkblue}{1} {normal}Material!"
+	}
+	"Phrase_Change_Alpha"
+	{
+		"#format"	"{1:d}"
+		"en"		"Your tracers now have a transparency value of {1}!"
+		"de"		"Ihr Laser hat jetzt einen Transparenz wert von {darkblue}{1}!"
+	}
+	"Phrase_Change_Visible_One"
+	{
+		"#format"	""
+		"en"		"Your tracers will be visible only to you!"
+		"de"		"Ihr Laser wird nur für Sie sichtbar sein!"
+	}
+	"Phrase_Change_Visible_Team"
+	{
+		"#format"	""
+		"en"		"Your tracers will be visible to all team members!"
+		"de"		"Ihr Laser wird für alle Team mitglieder sichtbar sein!"
+	}
+	"Phrase_Change_Visible_All"
+	{
+		"#format"	""
+		"en"		"Your tracers will be visible to all players!"
+		"de"		"Ihr Laser wird für alle Spieler sichtbar sein!"
+	}
+	//======================================================
+	"Menu_Option_Selected"
+	{
+		"#format"	""
+		"en"		"[*] "
+		"de"		"[*] "
+	}
+	"Menu_Option_Empty"
+	{
+		"#format"	""
+		"en"		"[  ] "
+		"de"		"[  ] "
+	}
+	//======================================================
+	"Menu_Title_Cookie"
+	{
+		"#format"	""
+		"en"		"Tracer Settings"
+		"de"		"Laser Einstellungen"
+	}
+	"Menu_Title_Main"
+	{
+		"#format"	""
+		"en"		"Tracer Settings:"
+		"de"		"Laser Einstellungen:"
+	}
+	"Menu_Title_Color"
+	{
+		"#format"	""
+		"en"		"Tracer Colors:"
+		"de"		"Laser Farbe:"
+	}
+	"Menu_Title_Width"
+	{
+		"#format"	""
+		"en"		"Tracer Widths:"
+		"de"		"Laser Breite:"
+	}
+	"Menu_Title_Life"
+	{
+		"#format"	""
+		"en"		"Tracer Durations:"
+		"de"		"Laser Dauer:"
+	}
+	"Menu_Title_Material"
+	{
+		"#format"	""
+		"en"		"Tracer Materials:"
+		"de"		"Laser Material:"
+	}
+	"Menu_Title_Alpha"
+	{
+		"#format"	""
+		"en"		"Tracer Transparency:"
+		"de"		"Laser Transparenz:"
+	}
+	"Menu_Title_Visible"
+	{
+		"#format"	""
+		"en"		"Tracer Visibility:"
+		"de"		"Laser Sichtbarkeit:"
+	}
+	//======================================================
+	"Menu_Option_Enable"
+	{
+		"#format"	""
+		"en"		"Enable Tracers"
+		"de"		"Laser aktivieren"
+	}
+	"Menu_Option_Disable"
+	{
+		"#format"	""
+		"en"		"Disable Tracers"
+		"de"		"Laser deaktivieren"
+	}	
+	"Menu_Option_Color"
+	{
+		"#format"	""
+		"en"		"Select Color"
+		"de"		"Farbe wählen"
+	}
+	"Menu_Option_Material"
+	{
+		"#format"	""
+		"en"		"Select Material"
+		"de"		"Material wählen"
+	}
+	"Menu_Option_Width"
+	{
+		"#format"	""
+		"en"		"Select Width"
+		"de"		"Breite wählen"
+	}
+	"Menu_Option_Life"
+	{
+		"#format"	""
+		"en"		"Select Duration"
+		"de"		"Dauer wählen"
+	}
+	"Menu_Option_Alpha"
+	{
+		"#format"	""
+		"en"		"Select Transparency"
+		"de"		"Transparenz wählen"
+	}
+	"Menu_Option_Visibility"
+	{
+		"#format"	""
+		"en"		"Select Visibility"
+		"de"		"Sichtbarkeit wählen"
+	}
+	//======================================================
+	"Menu_Option_Visibility_Single"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} Single"
+		"de"		"{1} Einzeln"
+	}
+	"Menu_Option_Visibility_Team"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} Team Members"
+		"de"		"{1} Team Mitglieder"
+	}
+	"Menu_Option_Visibility_All"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} All Players"
+		"de"		"{1} Alle Spieler"
+	}
+}

@@ -1,0 +1,153 @@
+// ============================================================================
+//
+//                              ZOMBIE:RELOADED
+//                            Model configuration
+//
+// See Model Configuration (3.5) section in the manual for detailed info.
+//
+// ============================================================================
+//
+// SHORT DESCRIPTIONS
+//
+// Attribute:   Description:
+// ----------------------------------------------------------------------------
+// name     Name of model file, without extension.
+// path     Path to model files. MUST end with "/".
+// team     Model type:
+//              "zombies"
+//              "humans"
+// access   Access type:
+//              "public"        - Everyone can use the model.
+//              "admins"        - Model can only be used by admins.    
+//              "hidden"        - Model is excluded from public random selections.
+//              "motherzombies" - Model can only be used by mother zombies.
+//              "group"         - Use group authentication.
+// group    If access is "group": A SourceMod group name. Otherwise blank ("").
+
+"models"
+{
+	
+"Painkiller"// name fantasia
+    {
+        "name"      "clown"// name.mdl
+        "path"      "models/player/ceylon/painkiller/"
+        "team"      "zombies"
+        "access"    "public"
+        "group"     ""
+    }
+	
+"Pirate"
+    {
+        "name"      "el_gigante"//name.mdl
+        "path"      "models/player/eminem/resident_evil_4/"
+        "team"      "zombies"
+        "access"    "public"
+        "group"     ""
+    }
+
+"JackFrost"
+    {
+        "name"      "snowman2"//name.mdl
+        "path"      "models/player/custom_player/kodua/snowman/"
+        "team"      "zombies"
+        "access"    "public"
+        "group"     ""
+    }
+
+"stalker"
+    {
+        "name"      "zombie_custom"//name.mdl
+        "path"      "models/player/napas/stalker/"
+        "team"      "zombies"
+        "access"    "public"
+        "group"     ""
+    }
+
+"soldier"
+    {
+        "name"      "soldier"//name.mdl
+        "path"      "models/player/nf/dead_effect_2/"
+        "team"      "zombies"
+        "access"    "public"
+        "group"     ""
+    }
+
+ 
+    
+    // Special model examples:
+    // -----------------------
+    
+    // Only admins can use this zombie model.
+    //"admin_zombie"
+    //{
+    //    "name"      "1337model"
+    //    "path"      "models/player/adminmodels/"
+    //    "team"      "zombies"
+    //    "access"    "admins"
+    //    "group"     "zr_adm"
+    //}
+    
+    // Only members of the zr_vip group in SourceMod can use this human model.
+"arcane_jinx"
+    {
+        "name"      "arcane_jinx"
+        "path"      "models/player/custom_player/kolka/Arcane_Jinx/"
+        "team"      "humans"
+        "access"    "public" // or group
+        "group"     ""// ot zr_vip
+    }
+    
+    // This model will be excluded from public random selections. Only classes
+    // that use "random_hidden" or explicit specify this model will be able to use it.
+	
+"VOIKANAA"
+    {
+        "name"      "samus"
+	"path"      "models/player/samus/"
+        "team"      "humans"
+        "access"    "public" // use "random_hidden" or "hidden" explicit specify this model will be able to use it.
+        "group"     ""
+    }
+
+"BARBIE"
+    {
+        "name"      "ciri_nude_tlou_v2"
+		"path"      "models/player/custom_player/tlou/ciri/"
+        "team"      "humans"
+        "access"    "public" // use "random_hidden" or "hidden" explicit specify this model will be able to use it.
+        "group"     ""
+    }
+"night_fighter"
+    {
+        "name"      "prowler"
+		"path"      "models/player/custom_player/night_fighter/fortnite/prowler/"
+        "team"      "humans"
+        "access"    "public" // use "random_hidden" or "hidden" explicit specify this model will be able to use it.
+        "group"     ""
+    }
+"Yasuo"
+    {
+        "name"      "Yasuo"
+		"path"      "models/player/custom_player/wcsnik/lol/Yasuo/spirit_blossom/"
+        "team"      "humans"
+        "access"    "public" // use "random_hidden" or "hidden" explicit specify this model will be able to use it.
+        "group"     ""
+    }
+"Pig"
+    {
+        "name"      "pig_v2"
+		"path"      "models/player/wcsnik/animals/pig/"
+        "team"      "humans"
+        "access"    "public" // use "random_hidden" or "hidden" explicit specify this model will be able to use it.
+        "group"     ""
+    }
+"viper_v2"
+    {
+        "name"      "viper_v2"
+		"path"      "models/player/custom_player/legacy/gxp/valorant/viper/"
+        "team"      "humans"
+        "access"    "public" // use "random_hidden" or "hidden" explicit specify this model will be able to use it.
+        "group"     ""
+    }
+
+}
