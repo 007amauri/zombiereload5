@@ -1,4 +1,4 @@
-# zombiereload5 (Config, Skins & Plugins Custom) use this to compile my plugin
+# zombiereload5 updadate 09 - 09 - 2023 (Config, Skins & Plugins Custom) use this to compile my plugin
 Download : https://mega.nz/file/y9plWAiC#pXqTkCE56i2azxRdQYMLtrPq45sWlwDXpf6XW1tpboc
 ZombieReloadSourceMod Solved custom kill icon
 ![image](https://github.com/007amauri/zombiereload5/assets/19276454/9679e23c-85fa-4caa-aadd-31d0e4071e0b)
